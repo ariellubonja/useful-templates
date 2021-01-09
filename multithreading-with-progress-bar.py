@@ -28,14 +28,14 @@ from multiprocessing.dummy import Pool as ThreadPool
 # Progress bar
 from tqdm import tqdm
 
-with ThreadPool(20) as p:
+with ThreadPool(300) as p:
     titles = list(tqdm(p.imap_unordered(get_title, urls), total=len(urls)))
 
 print("Writing results to CSV...")
 
 import csv
 
-with open('filename', 'wb') as myfile:
+with open('filename', 'w') as myfile:
     wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
     wr.writerow(titles)
 
